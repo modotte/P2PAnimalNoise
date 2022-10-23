@@ -1,0 +1,11 @@
+{
+  "Name": "Literarium",
+  "Author": "Modotte",
+  "Version": "0.1.0",
+  "Description": "A book system",
+  "UniqueID": "modotte.literarium",
+  "EntryDll": "Literarium.dll",
+  "MinimumApiVersion": "3.0.0",
+  "UpdateKeys": []
+}
+
