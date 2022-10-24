@@ -6,15 +6,18 @@ open StardewModdingAPI
 open StardewModdingAPI.Events
 open StardewModdingAPI.Utilities
 open StardewValley
+open StardewValley.Menus
 
-type public ModEntry() =
+type ModConfig() =
+    member val NoiseButton: SButton = SButton.Q with get, set
+
+type ModEntry() =
     inherit Mod()
+    member val private config: ModConfig option = None with get, set
 
     override this.Entry(helper: IModHelper) =
-        helper.Events.Input.ButtonPressed.Add(fun (e) -> this.OnButtonPressed(e))
+        this.config <- this.Helper.ReadConfig<ModConfig>() |> Some
+        helper.Events.GameLoop.GameLaunched.Add(fun e -> this.OnGameLaunched(e))
 
-    member private this.OnButtonPressed(e: ButtonPressedEventArgs) =
-        if not Context.IsWorldReady then
-            ()
-        else
-            this.Monitor.Log($"{Game1.player.Name} pressed {e.Button}", LogLevel.Debug)
+    member private this.OnGameLaunched(e: GameLaunchedEventArgs) =
+        this.Monitor.Log("Mod loaded", LogLevel.Debug)

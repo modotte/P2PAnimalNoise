@@ -1,6 +1,8 @@
 # SVFSharpExampleMod
 
 Crazy weather mod
+Destroy chest and auto drop items on ground
+PressToInsertNoise
 
 A Stardew Valley starter mod template for F# project instead of C#.
 Example was translated from [here](https://stardewvalleywiki.com/Modding:Modder_Guide/Get_Started). 
