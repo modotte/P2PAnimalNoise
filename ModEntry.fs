@@ -11,12 +11,34 @@ module Constant =
     [<Literal>]
     let GenericModConfigMenuId = "spacechase0.GenericModConfigMenu"
 
-module Noise =
-    let Animals = Map [ ("Quack", "Duck"); ("Meow", "cat"); ("Moo", "cow") ]
+    let DefaultNoiseKind = "Duck's quack"
 
 type ModConfig() =
     member val NoiseButton: SButton = SButton.Q with get, set
-    member val NoiseKind: string = "Quack" with get, set
+    member val NoiseKind: string = Constant.DefaultNoiseKind with get, set
+
+module Noise =
+    let Animals =
+        Map
+            [ ("Duck's quack", "Duck")
+              ("Cat's meow", "cat")
+              ("Cow's moo", "cow")
+              ("Cricket's chirp", "crickets")
+              ("Crow's caw", "crow")
+              ("Dog's bark", "dog_bark")
+              ("Dog's whine", "dogWhining")
+              ("Dog's pant", "dog_pant")
+              ("Fly's buzz", "flybuzzing")
+              ("Goat's maah", "goat")
+              ("Monkey's chatter", "monkey1")
+              ("Owl's hoot", "owl")
+              ("Dog's howl", "dogs")
+              ("Sheep's maah", "sheep")
+              ("Seagull's caw", "seagulls")
+              ("Rooster's cuckoo", "rooster")
+              ("Pig's oink", "pig")
+              ("Parrot's squawk", "parrot_squawk")
+              ("Ostrich's boom", "Ostrich") ]
 
 type ModEntry() =
     inherit Mod()
@@ -41,7 +63,7 @@ type ModEntry() =
             (fun () -> this.config.Value.NoiseButton),
             (fun x -> this.config.Value.NoiseButton <- x),
             (fun () -> "Noise keybind"),
-            (fun () -> ""),
+            (fun () -> "Bind a key button to play the sound in-game."),
             ""
         )
 
@@ -49,8 +71,8 @@ type ModEntry() =
             this.ModManifest,
             (fun () -> this.config.Value.NoiseKind),
             (fun x -> this.config.Value.NoiseKind <- x),
-            (fun () -> "Noise kind"),
-            (fun () -> ""),
+            (fun () -> "Noise"),
+            (fun () -> "Various (default) animal noises. Scroll down the list to see more options."),
             Noise.Animals |> Map.keys |> Seq.toArray,
             null,
             ""
