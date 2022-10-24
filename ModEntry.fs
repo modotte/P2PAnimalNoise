@@ -8,6 +8,11 @@ open StardewModdingAPI.Utilities
 open StardewValley
 open StardewValley.Menus
 
+
+module Constants =
+    [<Literal>]
+    let GenericModConfigMenuId = "spacechase0.GenericModConfigMenu"
+
 type ModConfig() =
     member val NoiseButton: SButton = SButton.Q with get, set
 
@@ -23,7 +28,7 @@ type ModEntry() =
 
     member private this.SetupConfig(e: GameLaunchedEventArgs) =
         let configMenu =
-            this.Helper.ModRegistry.GetApi<IGenericModConfigMenuAPI>("modotte.PressToNoise")
+            this.Helper.ModRegistry.GetApi<IGenericModConfigMenuAPI>(Constants.GenericModConfigMenuId)
 
         if configMenu.GetType() |> isNull then
             ()
@@ -44,5 +49,12 @@ type ModEntry() =
             ""
         )
 
+    member this.OnButtonPressed(e: ButtonPressedEventArgs) =
+        if Context.IsPlayerFree then
+            if e.Button = this.config.Value.NoiseButton then
+                Game1.currentLocation.playSound ("Duck")
+
     override this.Entry(helper: IModHelper) =
         this.config <- this.Helper.ReadConfig<ModConfig>() |> Some
+        helper.Events.GameLoop.GameLaunched.Add(fun e -> this.SetupConfig(e))
+        helper.Events.Input.ButtonPressed.Add(fun e -> this.OnButtonPressed(e))
