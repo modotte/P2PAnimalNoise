@@ -1,4 +1,4 @@
-namespace Literarium
+namespace P2PAnimalNoise
 
 open StardewModdingAPI
 open StardewModdingAPI.Events

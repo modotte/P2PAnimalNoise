@@ -1,11 +1,10 @@
 {
-  "Name": "Literarium",
+  "Name": "P2PAnimalNoise",
   "Author": "Modotte",
   "Version": "0.1.0",
-  "Description": "A book system",
-  "UniqueID": "modotte.literarium",
-  "EntryDll": "Literarium.dll",
+  "Description": "Press a button to play an animal sound in-game.",
+  "UniqueID": "modotte.P2PAnimalNoise",
+  "EntryDll": "P2PAnimalNoise.dll",
   "MinimumApiVersion": "3.0.0",
   "UpdateKeys": []
 }
-
