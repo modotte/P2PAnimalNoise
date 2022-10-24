@@ -52,12 +52,11 @@ type ModEntry() =
             null
         )
 
-    member this.OnButtonPressed(e: ButtonPressedEventArgs) =
-        if Context.IsPlayerFree then
-            if e.Button = this.config.Value.NoiseButton then
-                Game1.currentLocation.playSound (this.config.Value.NoiseType)
-
     override this.Entry(helper: IModHelper) =
         this.config <- this.Helper.ReadConfig<ModConfig>() |> Some
         helper.Events.GameLoop.GameLaunched.Add(fun e -> this.SetupConfig(e))
-        helper.Events.Input.ButtonPressed.Add(fun e -> this.OnButtonPressed(e))
+
+        helper.Events.Input.ButtonPressed.Add(fun e ->
+            if Context.IsPlayerFree then
+                if e.Button = this.config.Value.NoiseButton then
+                    Game1.currentLocation.playSound (this.config.Value.NoiseType))
