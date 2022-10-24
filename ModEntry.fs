@@ -4,15 +4,19 @@ open StardewModdingAPI
 open StardewModdingAPI.Events
 open StardewValley
 open GenericModConfigMenu
+open FSharp.Collections
 
 
-module Constants =
+module Constant =
     [<Literal>]
     let GenericModConfigMenuId = "spacechase0.GenericModConfigMenu"
 
+module Noise =
+    let Animals = Map [ ("Quack", "Duck"); ("Meow", "cat"); ("Moo", "cow") ]
+
 type ModConfig() =
     member val NoiseButton: SButton = SButton.Q with get, set
-    member val NoiseType: string = "Duck" with get, set
+    member val NoiseKind: string = "Quack" with get, set
 
 type ModEntry() =
     inherit Mod()
@@ -20,7 +24,7 @@ type ModEntry() =
 
     member private this.SetupConfig(e: GameLaunchedEventArgs) =
         let configMenu =
-            this.Helper.ModRegistry.GetApi<IGenericModConfigMenuApi>(Constants.GenericModConfigMenuId)
+            this.Helper.ModRegistry.GetApi<IGenericModConfigMenuApi>(Constant.GenericModConfigMenuId)
 
         if configMenu.GetType() |> isNull then
             ()
@@ -36,20 +40,20 @@ type ModEntry() =
             this.ModManifest,
             (fun () -> this.config.Value.NoiseButton),
             (fun x -> this.config.Value.NoiseButton <- x),
-            (fun () -> "Noise Button"),
+            (fun () -> "Noise keybind"),
             (fun () -> ""),
-            null
+            ""
         )
 
         configMenu.AddTextOption(
             this.ModManifest,
-            (fun () -> this.config.Value.NoiseType),
-            (fun x -> this.config.Value.NoiseType <- x),
-            (fun () -> "Noise type"),
+            (fun () -> this.config.Value.NoiseKind),
+            (fun x -> this.config.Value.NoiseKind <- x),
+            (fun () -> "Noise kind"),
             (fun () -> ""),
-            [| "Duck"; "cat" |],
+            Noise.Animals |> Map.keys |> Seq.toArray,
             null,
-            null
+            ""
         )
 
     override this.Entry(helper: IModHelper) =
@@ -59,4 +63,4 @@ type ModEntry() =
         helper.Events.Input.ButtonPressed.Add(fun e ->
             if Context.IsPlayerFree then
                 if e.Button = this.config.Value.NoiseButton then
-                    Game1.currentLocation.playSound (this.config.Value.NoiseType))
+                    Game1.currentLocation.playSound (Noise.Animals |> Map.find this.config.Value.NoiseKind))

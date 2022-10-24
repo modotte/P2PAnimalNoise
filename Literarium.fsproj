@@ -14,7 +14,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="*.fs" />
+    <Compile Include="IGenericModConfigMenuApi.fs" />
+    <Compile Include="ModEntry.fs" />
   </ItemGroup>
 
   <ItemGroup>
