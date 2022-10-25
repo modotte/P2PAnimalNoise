@@ -19,13 +19,13 @@ https://github.com/modotte/P2PAnimalNoise/releases
 
 ### Instructions
 
-- git clone https://github.com/modotte/SVAnimalNoise into a folder.
+- git clone https://github.com/modotte/P2PAnimalNoise into a folder.
 - Change ***GamePath*** property inside of **P2PAnimalNoise.fsproj** file to reflect your Stardew Valley installation folder.
 - Run `dotnet build --configuration Release`. Remember, ***DO NOT*** omit/skip `--configuration Release` option when building for test run.
 
 
 ### See Also
 
-- [dnMerge](https://github.com/CCob/dnMerge) - MSBuild plugin that enables assemblies to be merged (which what makes this F# template mod possible to be loaded by SMAPI). 
+- [dnMerge](https://github.com/CCob/dnMerge) - MSBuild plugin that enables assemblies to be merged (which what makes this F# mod possible to be loaded by SMAPI). 
 - [SMAPI configuration info](https://github.com/Pathoschild/SMAPI/blob/develop/docs/technical/mod-package.md#custom-game-path)
 - [Stardew Valley's F# starter template mod](https://github.com/modotte/SVFsharpExampleMod)

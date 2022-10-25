@@ -6,5 +6,5 @@
   "UniqueID": "modotte.P2PAnimalNoise",
   "EntryDll": "P2PAnimalNoise.dll",
   "MinimumApiVersion": "3.0.0",
-  "UpdateKeys": []
+  "UpdateKeys": [ "Github:modotte/P2PAnimalNoise" ]
 }
