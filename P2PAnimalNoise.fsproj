@@ -16,16 +16,6 @@
   <ItemGroup>
     <Compile Include="IGenericModConfigMenuApi.fs" />
     <Compile Include="ModEntry.fs" />
-
-    <!-- We want all markdown files in final zip archive (for distribution) -->
-    <Content Include="*.md">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-
-    <!-- We also want to bundle the LICENSE file for good measure -->
-    <Content Include="LICENSE">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
 
   <ItemGroup>
