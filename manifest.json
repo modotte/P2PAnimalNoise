@@ -1,7 +1,7 @@
 {
   "Name": "P2PAnimalNoise",
   "Author": "Modotte",
-  "Version": "0.1.1",
+  "Version": "0.1.2",
   "Description": "Press a button to play an animal sound in-game.",
   "UniqueID": "modotte.P2PAnimalNoise",
   "EntryDll": "P2PAnimalNoise.dll",

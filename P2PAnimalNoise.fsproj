@@ -4,18 +4,28 @@
     <TargetFramework>net5.0</TargetFramework>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <WarnOn>3390;$(WarnOn)</WarnOn>
-    <Deterministic>false</Deterministic>
   </PropertyGroup>
 
   <PropertyGroup>
     <!-- Example game path on linux: /home/user/.wine/drive_c/GOG Games/Stardew Valley -->
     <GamePath>/home/modotte/.wine/drive_c/Games/Stardew Valley</GamePath>
     <BundleExtraAssemblies>ThirdParty</BundleExtraAssemblies>
+    <IgnoreModFilePatterns>FSharp.Core.resources.dll$</IgnoreModFilePatterns>
   </PropertyGroup>
 
   <ItemGroup>
     <Compile Include="IGenericModConfigMenuApi.fs" />
     <Compile Include="ModEntry.fs" />
+
+    <!-- We want all markdown files in final zip archive (for distribution) -->
+    <Content Include="*.md">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+
+    <!-- We also want to bundle the LICENSE file for good measure -->
+    <Content Include="LICENSE">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
