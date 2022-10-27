@@ -38,7 +38,6 @@ This mod is released under the GPL-3.0 license. For more details,
  please see LICENSE file.
 
 ## See Also
-
-- [dnMerge](https://github.com/CCob/dnMerge) - MSBuild plugin that enables assemblies to be merged (which what makes this F# mod possible to be loaded by SMAPI). 
+ 
 - [SMAPI configuration info](https://github.com/Pathoschild/SMAPI/blob/develop/docs/technical/mod-package.md#custom-game-path)
 - [Stardew Valley's F# starter template mod](https://github.com/modotte/SVFsharpExampleMod)
