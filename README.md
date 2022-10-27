@@ -31,7 +31,11 @@ See [INSTALL.md](https://github.com/modotte/P2PAnimalNoise/blob/main/INSTALL.md)
   reflect your Stardew Valley installation folder path.
 3. Run `dotnet build --configuration Release`. Remember, ***DO NOT*** omit/skip 
   `--configuration Release` option when building for test run.
+   
+## License
 
+This mod is released under the GPL-3.0 license. For more details,
+ please see LICENSE file.
 
 ## See Also
 
